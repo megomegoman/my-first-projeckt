@@ -12,7 +12,7 @@ class ProduktPage(BasePage):
         assert self.is_element_present(*ProducktLocators.NAME_PRODUCKT), "Product name is not presented"
         self.messenge = self.browser.find_element(*ProducktLocators.ADDET_TO_BASKET)
         self.name_produkt = self.browser.find_element(*ProducktLocators.NAME_PRODUCKT)
-        assert self.name_produkt.text in self.messenge.text, "wrong product added to basket"
+        assert self.name_produkt.text == self.messenge.text, "wrong product added to basket"
 
     #проверяем что цена товара соответствует цене товара в корзине
     def price_in_the_basket(self):
@@ -20,7 +20,7 @@ class ProduktPage(BasePage):
         assert self.is_element_present(*ProducktLocators.PRISE_PRODUKT), "no product price"
         self.messenge_price = self.browser.find_element(*ProducktLocators.PRISE_IN_BASKET)
         self.price_produkt = self.browser.find_element(*ProducktLocators.PRISE_PRODUKT)
-        assert self.price_produkt.text in self.messenge_price.text, "the price does not match the value of the product"
+        assert self.price_produkt.text == self.messenge_price.text, "the price does not match the value of the product"
 
     def finding_a_product_in_the_basket(self):
         self.added_to_your_basket()
